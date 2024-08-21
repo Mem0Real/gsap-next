@@ -1,8 +1,8 @@
 "use client"
+// @refresh reset
 
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-// @refresh reset
 
 import { ScrollTrigger } from "gsap/all";
 import { useRef } from "react";
@@ -19,20 +19,20 @@ const GsapScrollTrigger = () => {
 
     boxes.forEach((box) => {
       gsap.to(box, {
-        x: 50 * (boxes.indexOf(box) + 5),
+        x: 100 * (boxes.indexOf(box) + 5),
         rotate: 360,
         borderRadius: "100%",
         scale: 1.5,
         scrollTrigger: {
           trigger: box,
-          start: 'bottom, bottom',
-          end: 'top, 20%',
+          start: 'bottom bottom',
+          end: 'top 10%',
           scrub: true,
-          ease: 'power1.inOut'
-        }
+        },
+        ease: 'power1.inOut'
       })
     })
-  }, [])
+  }, { scope: scrollRef })
 
   return (
     <main>
